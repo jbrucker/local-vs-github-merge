@@ -13,15 +13,15 @@ Initial files:
 
 - Switch to `dev` and modify README. Commit the changes.
 
-- For visual clarity, I made more changes and committed again.
+- Make more changes and commit again.
 
-`main` branch is now behind `dev` by 2 commits.
+`dev` is now ahead of `main` by 2 commits.
 
 ## `main` branch
 
 - Switch to `main` and add these lines to README. Commit the changes.
 
-- For clarity (again), I made more changes to README and committed again.
+- Add more lines and commit again.
 
 ## Graph of branches with divergent changes
 
@@ -29,9 +29,12 @@ After committing those changes, the repo looks like:
 
 ![Graph of divergent branches](images/before-merge.png)
 
+The graph shows that `main` and `dev` have diverged. 
+
 ## Push Everything to Github So We Can Repeat Merge Later
 
-- Push both branches to Github before doing a local merge.
+Before merging, I pushed this repo to Github so I can repeat
+the merge on Github and see how it compares.
 
 ## Local Merge
 
@@ -45,29 +48,30 @@ Conflict!
 
 git mergetool     # I use a visual mergetool to fix conflicts
 ```
-After resolving the conflict I committed the change to `main`
+After resolving the conflicts I committed README.md to `main`
 ```
 git add README.md
 git commit -m "merged locally"
 ```
-Now the repo looks like this. Notice that the merge commit is on **main**, not **dev**.
+Now the repo looks like this. Notice that the merge commit is on **main**. (This is what we expect.)
 
 ![Repository after local merge](images/after-local-merge.png)
 
 ## Merge with PR on Github
 
-On the pre-merged repository on Github, I created a Pull Request as suggested by Github.  Github reports conflicts and offers to open
-a "conflict resolution editor" like this:
+On the pre-merged repository on Github, I created a Pull Request to merge `dev` into `main`, as suggested by Github.  
+
+Github reports conflicts and offers to open a "conflict resolution editor" like this:
 
 ![Conflict Resolution Editor](images/github-conflict-resolver.png)
 
-Notice at top: **Github is merging main into dev** not `dev` into `main`.
+Notice the text at top: **Github is merging main into dev**
 
 After resolving the conflict and commiting, the repo on Github looks like this:
 
 ![After Conflict Resolution](images/after-github-conflict-resolver.png)
 
-Notice the new node on `dev` where the merge occurred.
+Notice the new commit on `dev` where the merge occurred.
 
 ## PR Merges `dev` into `main`
 
@@ -82,12 +86,21 @@ I clicked "Merge pull request", and it merged `dev` into `main`. So finally the 
 
 ![after PR and merge on Github](images/after-github-merge-into-main.png)
 
+## Why Does Github Do This?
+
+Github wants to protect the `main`/`master` branch from buggy, untested code.  So, it resolves conflicts on *another* branch first.
+
+You can then test and review that branch.  Or use CI to run tests.
+
+This avoids introducing untested code and possible errors in main.
+
 ## Summary
 
-When you merge branches with conflicts, Github's conflict resolver merges the changes into the branch.  
+If you open a PR and Github find conflicts, the Github conflict resolver merges the changes into a branch rather than main. This projects the main or master branch from untested code that may contain errors.
 
-Its up to use to use a Pull Request to merge the branch into main or master. Or, you can close (abort) the PR to avoid changing the master branch.
+After conflicts are resolved, you should re-test your code, and then proceed with the PR as usual.
 
-This is safer than merging directly into master.
+We can do this locally, too. Instead of merging `dev` -> `main`, we can checkout `dev` and merge `main` -> `dev`. Then test and review it to verify the merge did not produce any errors.
 
-You can do this locally, too.  Simply checkout your feature branch and merge main/master into it *before* merging the feature branch into master.
+Finally, if everything looks good then merge `dev` into `main`, which will be a simple "fast forward" merge.
+
