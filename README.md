@@ -13,3 +13,7 @@ Initial files:
 - Create a `dev` branch.
 
 - Switch to `dev` and modify README. Commit the changes.
+
+- For visual clarity, I made more changes and committed again.
+
+`main` branch is now behind `dev` by 2 commits.
