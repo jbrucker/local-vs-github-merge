@@ -6,3 +6,7 @@ To see this, I created this repository with two divergent branches `main` and `d
 
 Initial files:
 - Add a README (like this one) to `main`.
+
+## `main` branch
+
+- Switch to `main` and add these lines to README. Commit the changes.
