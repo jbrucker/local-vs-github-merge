@@ -7,6 +7,16 @@ To see this, I created this repository with two divergent branches `main` and `d
 Initial files:
 - Add a README (like this one) to `main`.
 
+## `dev` branch
+
+- Create a `dev` branch.
+
+- Switch to `dev` and modify README. Commit the changes.
+
+- For visual clarity, I made more changes and committed again.
+
+`main` branch is now behind `dev` by 2 commits.
+
 ## `main` branch
 
 - Switch to `main` and add these lines to README. Commit the changes.
@@ -20,4 +30,3 @@ Initial files:
 ## Push Everything to Github So We Can Repeat Merge Later
 
 - Push both branches to Github before doing a local merge.
-
