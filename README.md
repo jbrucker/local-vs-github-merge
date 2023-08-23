@@ -6,3 +6,10 @@ To see this, I created this repository with two divergent branches `main` and `d
 
 Initial files:
 - Add a README (like this one) to `main`.
+
+
+## `dev` branch
+
+- Create a `dev` branch.
+
+- Switch to `dev` and modify README. Commit the changes.
