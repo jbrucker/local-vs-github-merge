@@ -10,3 +10,14 @@ Initial files:
 ## `main` branch
 
 - Switch to `main` and add these lines to README. Commit the changes.
+
+- For clarity (again), I made more changes to README and committed again.
+
+## Graph of branches with divergent changes
+
+![Graph of divergent branches](images/before-merge.png)
+
+## Push Everything to Github So We Can Repeat Merge Later
+
+- Push both branches to Github before doing a local merge.
+
